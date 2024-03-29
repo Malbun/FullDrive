@@ -123,6 +123,7 @@ public class App extends Application {
 
       Scene closeScene = new Scene(main);
       requestCloseStage.setScene(closeScene);
+      requestCloseStage.setResizable(false);
       requestCloseStage.setTitle("Wirklich Schliessen");
       requestCloseStage.getIcons().add(icon);
       requestCloseStage.show();

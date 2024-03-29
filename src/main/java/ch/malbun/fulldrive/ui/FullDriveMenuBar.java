@@ -67,6 +67,7 @@ public class FullDriveMenuBar extends VBox {
 
       Scene scene = new Scene(main);
       requestCloseStage.setScene(scene);
+      requestCloseStage.setResizable(false);
       requestCloseStage.setTitle("Wirklich Schliessen");
       requestCloseStage.getIcons().add(icon);
       requestCloseStage.show();
