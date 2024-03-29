@@ -87,6 +87,8 @@ public class TileGrid extends GridPane {
     String[] splitedFilename = file.getName().split("\\.");
     if (Arrays.asList(splitedFilename).contains("gplx")) {
 
+      tiles.stream().filter(tile -> tile.component != Components.BLANK).forEach(tile -> tile.setComponent(Components.BLANK));
+
       try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
         StringBuilder builder = new StringBuilder();
         br.lines().forEach(builder::append);
@@ -147,6 +149,7 @@ public class TileGrid extends GridPane {
   }
 
   public void export(File file) throws IOException {
+    resetBorder();
     WritableImage writableImage = snapshot(new SnapshotParameters(), null);
     BufferedImage bfImage = SwingFXUtils.fromFXImage(writableImage, null);
     ImageIO.write(bfImage, "png", file);
