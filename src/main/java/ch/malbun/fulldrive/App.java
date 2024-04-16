@@ -26,12 +26,21 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
+
 public class App extends Application {
   static TileGrid tileGrid;
   static FullDriveToolBar toolBar;
+  static String[] arguments;
+  static boolean bootnormal = false;
 
   @Override
   public void start(Stage stage) {
+
+    bootnormal = arguments.length == 0;
+
     BorderPane root = new BorderPane();
     root.setStyle("-fx-background-color: black;");
 
@@ -85,7 +94,25 @@ public class App extends Application {
     stage.getIcons().add(ImageLoader.load(Components.DKW));
     stage.setTitle("FullDrive");
     stage.setScene(scene);
-    stage.setOnCloseRequest(Event::consume);
+
+    if (!bootnormal) {
+      stage.setOnCloseRequest(e -> {
+        try {
+          tileGrid.export(new File(arguments[1] + ".png"));
+          tileGrid.save(new File(arguments[1] + ".gplx"));
+        } catch (IOException ex) {
+          throw new RuntimeException(ex);
+        }
+        Platform.exit();
+        System.exit(0);
+      });
+
+    } else {
+      stage.setOnCloseRequest(Event::consume);
+    }
+
+
+
     stage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> {
       Stage requestCloseStage = new Stage();
       VBox main = new VBox();
@@ -128,10 +155,16 @@ public class App extends Application {
       requestCloseStage.getIcons().add(icon);
       requestCloseStage.show();
     });
+    if (!bootnormal) {
+      if (!Objects.equals(arguments[0], "!!nofile!!")) {
+        tileGrid.load(new File(arguments[0] + ".gplx"));
+      }
+    }
     stage.show();
   }
 
   public static void main(String[] args) {
+    arguments = args;
     launch();
   }
 
