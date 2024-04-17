@@ -157,9 +157,12 @@ public class TileGrid extends GridPane {
 
   }
 
+  private int editcounter = 0;
   public void setComponentForTile(int index, Components components) {
     tiles.stream().filter(tile -> tile.index == index).toList().get(0).setComponent(components);
-    if (!App.bootnormal) {
+    if (!App.bootnormal) editcounter++;
+    if (!App.bootnormal && editcounter > 3) {
+      editcounter = 0;
       save(new File(App.arguments[0] + ".gplx"));
       try {
         export(new File(App.arguments[0] + ".png"));
