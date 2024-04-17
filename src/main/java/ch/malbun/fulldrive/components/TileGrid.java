@@ -1,5 +1,6 @@
 package ch.malbun.fulldrive.components;
 
+import ch.malbun.fulldrive.App;
 import ch.malbun.fulldrive.images.ImageLoader;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
@@ -158,6 +159,14 @@ public class TileGrid extends GridPane {
 
   public void setComponentForTile(int index, Components components) {
     tiles.stream().filter(tile -> tile.index == index).toList().get(0).setComponent(components);
+    if (!App.bootnormal) {
+      save(new File(App.arguments[0] + ".gplx"));
+      try {
+        export(new File(App.arguments[0] + ".png"));
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
   }
 
   public void setRotationForTile(int index, Rotation rotation) {

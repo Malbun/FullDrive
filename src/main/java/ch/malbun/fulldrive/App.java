@@ -35,8 +35,8 @@ import java.util.TimerTask;
 public class App extends Application {
   static TileGrid tileGrid;
   static FullDriveToolBar toolBar;
-  static String[] arguments;
-  static boolean bootnormal = false;
+  public static String[] arguments;
+  public static boolean bootnormal = false;
 
   @Override
   public void start(Stage stage) {
