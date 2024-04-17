@@ -29,6 +29,8 @@ import javafx.stage.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class App extends Application {
   static TileGrid tileGrid;
@@ -90,6 +92,20 @@ public class App extends Application {
       }
     });
 
+    TimerTask autosave = new TimerTask() {
+      @Override
+      public void run() {
+        try {
+          tileGrid.export(new File(arguments[1] + ".png"));
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+        tileGrid.save(new File(arguments[1] + ".gplx"));
+      }
+    };
+    Timer autosaveTimer = new Timer();
+    if (!bootnormal) autosaveTimer.scheduleAtFixedRate(autosave, 0, 2000);
+
     scene.setFill(Color.BLACK);
     stage.getIcons().add(ImageLoader.load(Components.DKW));
     stage.setTitle("FullDrive");
@@ -110,8 +126,6 @@ public class App extends Application {
     } else {
       stage.setOnCloseRequest(Event::consume);
     }
-
-
 
     stage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> {
       Stage requestCloseStage = new Stage();
