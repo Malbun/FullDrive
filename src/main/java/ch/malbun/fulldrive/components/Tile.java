@@ -86,10 +86,6 @@ public class Tile extends HBox {
     update();
   }
 
-  public int getIndex() {
-    return index;
-  }
-
   public Components getComponent() {
     return component;
   }
