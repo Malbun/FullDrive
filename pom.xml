@@ -6,7 +6,7 @@
 
     <groupId>ch.malbun</groupId>
     <artifactId>FullDrive</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>FullDrive</name>
 
     <properties>
@@ -18,11 +18,6 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>22</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
             <version>22</version>
         </dependency>
         <dependency>
