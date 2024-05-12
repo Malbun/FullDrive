@@ -147,7 +147,10 @@ public class App extends Application {
 
       Button yes = new Button("Ja");
       yes.setAlignment(Pos.CENTER_LEFT);
-      yes.setOnAction(actionEvent -> Platform.exit());
+      yes.setOnAction(actionEvent -> {
+        Platform.exit();
+        System.exit(0);
+      });
       buttonBox.getChildren().add(yes);
 
       buttonBox.setAlignment(Pos.CENTER);
