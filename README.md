@@ -13,6 +13,8 @@ Weiche 1 | Q
 Weiche 2 | W
 Strecke 1 | A
 Strecke 2 | S
+Kurve 1| D
+Kurve 2 | F
 Bahnsteig | Y
 Signal | X
 

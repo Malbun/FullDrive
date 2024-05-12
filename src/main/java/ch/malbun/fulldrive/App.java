@@ -89,6 +89,10 @@ public class App extends Application {
         tileGrid.setRotationForTile(tileGrid.getSelectedIndex(), Rotation.LEFT);
       } else if (keyEvent.getCode() == KeyCode.L) {
         tileGrid.setRotationForTile(tileGrid.getSelectedIndex(), Rotation.RIGHT);
+      } else if (keyEvent.getCode() == KeyCode.D) {
+        tileGrid.setComponentForTile(tileGrid.getSelectedIndex(), Components.KURVE);
+      } else if (keyEvent.getCode() == KeyCode.F) {
+        tileGrid.setComponentForTile(tileGrid.getSelectedIndex(), Components.KURVE2);
       }
     });
 
