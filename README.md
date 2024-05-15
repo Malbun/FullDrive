@@ -17,6 +17,7 @@ Kurve 1| D
 Kurve 2 | F
 Bahnsteig | Y
 Signal | X
+Leer | B
 
 Ausrichtung | Taste
 ---|---
