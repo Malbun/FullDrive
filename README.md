@@ -25,3 +25,5 @@ Nord | I
 Süd | K
 West | J
 Ost | L
+
+### Achtung: FullDrive funktioniert nur unter Windows!
